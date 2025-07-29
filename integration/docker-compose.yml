@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  gateway:
+    build: .
+    ports:
+      - "3001:3000"
+    depends_on:
+      - user-service
+      - task-service
+      - notification-service
+  user-service:
+    image: node:18
+    command: "node -e \"console.log('User Service Running')\""
+    ports:
+      - "3001:3001"
+  task-service:
+    image: node:18
+    command: "node -e \"console.log('Task Service Running')\""
+    ports:
+      - "3002:3002"
+  notification-service:
+    image: node:18
+    command: "node -e \"console.log('Notification Service Running')\""
+    ports:
+      - "3003:3003"
